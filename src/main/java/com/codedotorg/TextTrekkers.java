@@ -125,10 +125,48 @@ public class TextTrekkers {
      * @param input The user's command.
      * @return A string describing the result of the user's command.
      */
-    public String processCommand(String input) {
-        
-        return "";
-    }
+    
+    
+        public String processCommand(String input) {
+            // Convert the input to lowercase
+            input = input.toLowerCase();
+    
+            // Handle the "go north" command
+            if (input.equals("go north")) {
+                return "You see a vast forest stretching out before you.";
+            }
+            // Handle the "pick up key" command
+            else if (input.equals("pick up key")) {
+                if (!hasKey) {
+                    hasKey = true;
+                    return "You have picked up the key.";
+                } else {
+                    return "You already have the key.";
+                }
+            }
+            // Handle the "use key" command
+        else if (input.equals("use key")) {
+            if (hasKey) {
+                doorLocked = false;
+                return "You have unlocked the door.";
+            } else {
+                return "You don't have a key to use.";
+            }
+        }
+        // Handle the "open door" command
+        else if (input.equals("open door")) {
+            if (!doorLocked) {
+                return "You open the door and step through. You have won!";
+            } else {
+                return "The door is locked. You need to unlock it first.";
+            }
+        }
+            // Placeholder for other commands
+            else {
+                return "Command not understood.";
+            }
+        }
+    
 
     /**
      * Creates a new TextField for user input and sets an action event to handle the input.
